@@ -20,7 +20,7 @@ public class Utils {
         InputStream input = null;
 
         String propertyFilePath = new File("")
-                .getAbsolutePath() + "\\resources\\config.properties";
+                .getAbsolutePath() + File.pathSeparatorChar+"resources"+File.pathSeparatorChar+"config.properties";
 
         try {
 

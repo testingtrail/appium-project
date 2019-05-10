@@ -10,13 +10,14 @@ Installation
            MAVEN_HOME, so, it’s safer to add both: C:\Libs\apache-maven-3.5.4
   - Edit Windows environment variables, Path: C:\Libs\apache-maven-3.5.4\bin
 - Make sure you have Android SDK (should be part of system environment under path)
-- Appium should be installed and running
+- Appium server should be installed
 - Clone this repository
 - Open the project in a desired IDE. Intellij was used for this project
 - Wait for Maven to download all the dependencies
 
 How to run
 ----------
+- Make sure your appium server is up and running
 - Go to config.properties file and set the values as per your device
 - If using emulator uncomment this line in Eyeem_test.java
   - cap.setCapability("avd","<yourdevicenamehere>");

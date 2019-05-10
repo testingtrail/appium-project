@@ -5,6 +5,7 @@ Description: Class with the test files to run
  */
 
 import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.MobileElement;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.remote.MobileCapabilityType;
@@ -23,7 +24,8 @@ import java.net.URL;
 public class Eyeem_test {
 
     //create appium driver
-    AppiumDriver<WebElement> driver;
+    AppiumDriver driver;
+    //you can also use Webdriver (for web and mobile) or AndroidDriver (with more functions for Android).
 
     @BeforeClass
     public void setup() throws MalformedURLException {
@@ -31,23 +33,26 @@ public class Eyeem_test {
 
         //to use another emulator run 'adb devices' and get the real name to put here
         cap.setCapability(MobileCapabilityType.DEVICE_NAME, Utils.loadProperties().getProperty("deviceName"));
+        cap.setCapability(MobileCapabilityType.PLATFORM_NAME, Utils.loadProperties().getProperty("platformName"));
+        cap.setCapability(MobileCapabilityType.PLATFORM_VERSION, Utils.loadProperties().getProperty("androidVersion"));
 
         // This package name of your app (you can get it from apk info app)
         cap.setCapability("appPackage", Utils.loadProperties().getProperty("Package"));
-
-        // This is Launcher activity of your app (you can get it from apk info app)
+        // This is Launcher activity of your app (you can get it from "apk info" app)
         cap.setCapability("appActivity", Utils.loadProperties().getProperty("Activity"));
-
-        cap.setCapability(MobileCapabilityType.PLATFORM_VERSION, Utils.loadProperties().getProperty("androidVersion"));
-
-        //If using AVD emulator, uncomment this and add the device name
-        // cap.setCapability("avd","<yourdevicenamehere>");
 
         //Clear files after running
         cap.setCapability("clearSystemFiles", true);
 
+        //If using AVD emulator, uncomment this and add the device name
+        // cap.setCapability("avd","<yourdevicenamehere>");
+
+        //there are another capabilities you can add such as:
+        //uiid which is the number when you run adb devices
+
         //Linking the capabilities to Appium
-        driver = new AndroidDriver<WebElement>(new URL("http://127.0.0.1:4723/wd/hub"),cap);
+        // again this can be AndroidDriver as well.
+        driver = new AppiumDriver<MobileElement>(new URL("http://127.0.0.1:4723/wd/hub"),cap);
     }
 
 
