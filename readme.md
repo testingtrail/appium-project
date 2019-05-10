@@ -29,4 +29,4 @@ Tools/Technologies used
 - Java as programming language
 - Appium for device automation driver
 - Maven for dependency control
-- TestNG for test case management
+- TestNG for test case management 
